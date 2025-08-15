@@ -1,15 +1,5 @@
 # Zurigotchi 🏛️
 
-A Tamagotchi-style game with SimCity elements focused on managing Zurich districts (Kreise). Make kommunalpolitik more appealing and engaging through progressive district management!
-
-## 🎮 Game Concept
-
-- **Tamagotchi-style**: Your district is like a digital pet that needs care and attention
-- **SimCity elements**: Manage infrastructure, services, and community well-being
-- **Zurich-focused**: Choose and maintain one of Zurich's 12 districts
-- **Progressive values**: Subtle left-wing progressive messaging through gameplay
-- **Educational**: Learn about local politics and community management
-
 ## 🚀 Getting Started
 
 ### Prerequisites
