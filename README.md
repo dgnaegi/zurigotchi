@@ -62,24 +62,6 @@ npm run web
 2. Run `npm start` in your terminal
 3. Scan the QR code with your device's camera (iOS) or the Expo Go app (Android)
 
-## 🛠️ Development
-
-### Project Structure
-
-```
-zurigotchi/
-├── App.tsx              # Main app component
-├── app.json             # Expo configuration
-├── package.json         # Dependencies and scripts
-├── tsconfig.json        # TypeScript configuration
-├── assets/              # Images, fonts, and other static assets
-└── src/                 # Source code (to be created)
-    ├── components/      # Reusable UI components
-    ├── screens/         # App screens
-    ├── types/           # TypeScript type definitions
-    └── utils/           # Utility functions
-```
-
 ### Available Scripts
 
 - `npm start` - Start the Expo development server
@@ -124,55 +106,3 @@ For manual builds, you'll need to eject from Expo:
 ```bash
 expo eject
 ```
-
-## 🎯 Game Features (Planned)
-
-- **District Selection**: Choose from Zurich's 12 districts
-- **Resource Management**: Balance budget, infrastructure, and services
-- **Community Events**: Respond to citizen needs and events
-- **Progressive Policies**: Implement sustainable and inclusive policies
-- **Visual Feedback**: District appearance changes based on management
-- **Educational Content**: Learn about local politics and community issues
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Troubleshooting
-
-### Common Issues
-
-**Metro bundler issues:**
-```bash
-npm start -- --clear
-```
-
-**iOS Simulator not working:**
-- Make sure Xcode is installed and updated
-- Run `sudo xcode-select --switch /Applications/Xcode.app`
-
-**Android Emulator not working:**
-- Make sure Android Studio is installed
-- Create and start an Android Virtual Device (AVD)
-
-**Expo Go app issues:**
-- Make sure your device and computer are on the same network
-- Try using a tunnel connection: `npm start -- --tunnel`
-
-### Getting Help
-
-- Check the [Expo documentation](https://docs.expo.dev/)
-- Visit the [React Native documentation](https://reactnative.dev/)
-- Open an issue in this repository
-
----
-
-**Happy district managing! 🏛️✨**
