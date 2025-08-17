@@ -104,7 +104,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onDistrictSelect }) =>
   const availableDistricts = districts.filter(district => district.available);
 
   return (
-    <ScreenLayout backgroundImage={backgroundImages.startScreen}>
+    <ScreenLayout backgroundImage={backgroundImages.startScreen} showBottomToggle={false}>
       <UpperContent>
         <View />
       </UpperContent>

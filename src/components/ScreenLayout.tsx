@@ -3,10 +3,12 @@ import { Animated } from 'react-native';
 import styled from 'styled-components/native';
 import { colors } from '../constants/colors';
 import { ToggleCollapseButton } from './ToggleCollapseButton';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Container = styled.View`
   flex: 1;
   background-color: ${colors.background};
+  position: relative;
 `;
 
 const BackgroundImage = styled.ImageBackground`
@@ -59,6 +61,7 @@ interface ScreenLayoutProps {
   backgroundImage?: any;
   children: React.ReactNode;
   defaultCollapsed?: boolean;
+  showBottomToggle?: boolean;
 }
 
 interface ScreenLayoutContextType {
@@ -71,7 +74,8 @@ const ScreenLayoutContext = React.createContext<ScreenLayoutContextType | null>(
 export const ScreenLayout: React.FC<ScreenLayoutProps> = ({ 
   backgroundImage, 
   children,
-  defaultCollapsed = false
+  defaultCollapsed = false,
+  showBottomToggle = true,
 }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [animation] = useState(new Animated.Value(1));
@@ -94,21 +98,24 @@ export const ScreenLayout: React.FC<ScreenLayoutProps> = ({
 
   return (
     <ScreenLayoutContext.Provider value={contextValue}>
-      <Container>
-        {backgroundImage ? (
-          <BackgroundImage source={backgroundImage} resizeMode="cover">
-            <Content>
+      <SafeAreaProvider>
+        <Container>
+          {backgroundImage ? (
+            <BackgroundImage source={backgroundImage} resizeMode="cover">
+              <Content pointerEvents="box-none">
+                {children}
+              </Content>
+            </BackgroundImage>
+          ) : (
+            <Content pointerEvents="box-none">
               {children}
-              <ToggleCollapseButton collapsed={isCollapsed} onPress={toggleCollapse} />
             </Content>
-          </BackgroundImage>
-        ) : (
-          <Content>
-            {children}
+          )}
+          {showBottomToggle && (
             <ToggleCollapseButton collapsed={isCollapsed} onPress={toggleCollapse} />
-          </Content>
-        )}
-      </Container>
+          )}
+        </Container>
+      </SafeAreaProvider>
     </ScreenLayoutContext.Provider>
   );
 };

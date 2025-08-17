@@ -6,6 +6,7 @@ import { backgroundImages } from '../constants/backgrounds';
 import { ScreenLayout, UpperContent, LowerContent } from '../components/ScreenLayout';
 import { View } from 'react-native';
 import { AvatarContainer, AvatarImage } from './GameScreen.styled';
+import { TopStatsPanel } from '../components/TopStatsPanel';
 
 const DistrictTitle = styled.Text`
   font-size: 28px;
@@ -44,6 +45,7 @@ interface GameScreenProps {
 export const GameScreen: React.FC<GameScreenProps> = ({ selectedDistrict, onBackToStart }) => {
   return (
     <ScreenLayout backgroundImage={backgroundImages.gameBackground}>
+      <TopStatsPanel overallScore={72} />
       <UpperContent>
         <AvatarContainer>
           <AvatarImage source={require('../../assets/avatar.png')} />
