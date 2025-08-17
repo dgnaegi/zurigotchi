@@ -1,18 +1,14 @@
 # Zurigotchi 🏛️
 
-A Tamagotchi-style game with SimCity elements focused on managing Zurich districts (Kreise). Make kommunalpolitik more appealing and engaging through progressive district management!
+A Tamagotchi-style game with SimCity elements focused on managing Zurich districts (Kreise).
 
 ## 🎮 Game Concept
 
 - **Tamagotchi-style**: Your district is like a digital pet that needs care and attention
 - **SimCity elements**: Manage infrastructure, services, and community well-being
-- **Zurich-focused**: Choose and maintain one of Zurich's 12 districts
-- **Progressive values**: Subtle left-wing progressive messaging through gameplay
-- **Educational**: Learn about local politics and community management
+- **Zurich-focused**: Choose and maintain one of Zurich districts
 
 ## 🎨 Color Scheme
-
-Zurigotchi uses a vibrant, energetic color palette that reflects the dynamic nature of city management:
 
 ### Primary Colors
 
@@ -23,14 +19,6 @@ Zurigotchi uses a vibrant, energetic color palette that reflects the dynamic nat
 | **Deep Magenta** | `#CC00CD` | (204, 0, 205) | Primary text, main buttons |
 | **Shocking Pink** | `#E90DCF` | (233, 13, 207) | Accents, highlights, secondary text |
 | **Hot Magenta** | `#FE1ECC` | (254, 30, 204) | Success states, hover effects |
-
-### Color Usage Guidelines
-
-- **Backgrounds**: Middle Yellow (`#FDE803`) for main backgrounds
-- **Text**: Deep Magenta (`#CC00CD`) for primary text, Shocking Pink (`#E90DCF`) for secondary text
-- **Interactive Elements**: Deep Magenta for primary buttons, Shocking Pink for secondary actions
-- **Status Indicators**: Cyber Yellow for warnings, Hot Magenta for success states
-- **Accents**: Shocking Pink and Hot Magenta for highlights and emphasis
 
 ### Global Color Variables
 
@@ -58,7 +46,7 @@ borderColor: colors.accent             // #E90DCF
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/dgnaegi/zurigotchi
    cd zurigotchi
    ```
 
