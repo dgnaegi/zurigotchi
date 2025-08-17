@@ -5,6 +5,7 @@ import { District } from '../constants/districts';
 import { backgroundImages } from '../constants/backgrounds';
 import { ScreenLayout, UpperContent, LowerContent } from '../components/ScreenLayout';
 import { View } from 'react-native';
+import { AvatarContainer, AvatarImage } from './GameScreen.styled';
 
 const DistrictTitle = styled.Text`
   font-size: 28px;
@@ -44,7 +45,9 @@ export const GameScreen: React.FC<GameScreenProps> = ({ selectedDistrict, onBack
   return (
     <ScreenLayout backgroundImage={backgroundImages.gameBackground}>
       <UpperContent>
-        <View />
+        <AvatarContainer>
+          <AvatarImage source={require('../../assets/avatar.png')} />
+        </AvatarContainer>
       </UpperContent>
       
       <LowerContent>

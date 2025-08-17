@@ -141,6 +141,10 @@ export const LowerContent: React.FC<{ children: React.ReactNode }> = ({ children
   return (
     <Animated.View
       style={{
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
         height: animation.interpolate({
           inputRange: [0, 1],
           outputRange: [0, 300],
