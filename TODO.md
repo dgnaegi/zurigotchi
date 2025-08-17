@@ -2,8 +2,8 @@
 
 ## 🎮 Core Game Features
 
-- [ ] Add Avatar
-- [ ] Add Top Stats Menu
+- [X] Add Avatar
+- [ ] Add Top Stats Menu with overall stat, settings and expandable
 - [ ] Define stats / KPI
 - [ ] Add Bottom Actions
 - [ ] Add Events per Kreis
