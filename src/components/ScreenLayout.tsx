@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Animated } from 'react-native';
 import styled from 'styled-components/native';
 import { colors } from '../constants/colors';
+import { ToggleCollapseButton } from './ToggleCollapseButton';
 
 const Container = styled.View`
   flex: 1;
@@ -98,17 +99,13 @@ export const ScreenLayout: React.FC<ScreenLayoutProps> = ({
           <BackgroundImage source={backgroundImage} resizeMode="cover">
             <Content>
               {children}
-              <ToggleButton onPress={toggleCollapse}>
-                <ToggleIcon>{isCollapsed ? '▼' : '▲'}</ToggleIcon>
-              </ToggleButton>
+              <ToggleCollapseButton collapsed={isCollapsed} onPress={toggleCollapse} />
             </Content>
           </BackgroundImage>
         ) : (
           <Content>
             {children}
-            <ToggleButton onPress={toggleCollapse}>
-              <ToggleIcon>{isCollapsed ? '▼' : '▲'}</ToggleIcon>
-            </ToggleButton>
+            <ToggleCollapseButton collapsed={isCollapsed} onPress={toggleCollapse} />
           </Content>
         )}
       </Container>

@@ -32,22 +32,4 @@ export const LowerHalf = styled.View`
   flex: 1;
 `;
 
-export const ToggleButton = styled.TouchableOpacity`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-30px);
-  width: 60px;
-  height: 40px;
-  background-color: ${colors.buttonPrimary};
-  border-radius: 20px 20px 0 0;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
-`;
-
-export const ToggleIcon = styled.Text`
-  color: ${colors.textInverse};
-  font-size: 24px;
-  font-weight: bold;
-`;
+// Toggle button moved to separate component styles: ToggleCollapseButton.styled.tsx
