@@ -13,6 +13,7 @@ const DistrictTitle = styled.Text`
   font-weight: bold;
   color: ${colors.textInverse};
   text-align: center;
+  margin-top: 16px;
   margin-bottom: 20px;
 `;
 
@@ -22,6 +23,14 @@ const DistrictDescription = styled.Text`
   text-align: center;
   margin-bottom: 30px;
   line-height: 24px;
+`;
+
+const InfoText = styled.Text`
+  font-size: 16px;
+  color: ${colors.textInverse};
+  text-align: center;
+  line-height: 22px;
+  margin-bottom: 16px;
 `;
 
 const ButtonsRow = styled.View`
@@ -72,6 +81,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({ selectedDistrict, onBack
       <ActionBar>
         <DistrictTitle>Willkommen in {selectedDistrict.germanName}!</DistrictTitle>
         <DistrictDescription>{selectedDistrict.description}</DistrictDescription>
+        <InfoText>Als Koordinator*in des {selectedDistrict.germanName} ist deine Aufgabe dein Quartier zu hegen und zu pflegen.</InfoText>
         <ButtonsRow>
           <SecondaryButton onPress={onBackToStart}>
             <ButtonText>Zurück</ButtonText>

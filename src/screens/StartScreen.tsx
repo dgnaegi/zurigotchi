@@ -29,7 +29,7 @@ const DropdownContainer = styled.View`
 
 const DropdownButton = styled.TouchableOpacity`
   background-color: ${colors.surface};
-  padding: 15px;
+  padding: 10px;
   border-radius: 8px;
   flex-direction: row;
   justify-content: space-between;
@@ -37,7 +37,7 @@ const DropdownButton = styled.TouchableOpacity`
 `;
 
 const DropdownButtonText = styled.Text`
-  font-size: 16px;
+  font-size: 15px;
   color: ${colors.textPrimary};
   font-weight: bold;
 `;
@@ -51,35 +51,23 @@ const DropdownList = styled.View`
   background-color: ${colors.surface};
   border-radius: 8px;
   margin-top: 5px;
-  max-height: 200px;
+  max-height: 120px;
 `;
 
-const DropdownItem = styled.TouchableOpacity<{ available: boolean }>`
-  padding: 15px;
-  border-bottom-width: 1px;
+const DropdownItem = styled.TouchableOpacity<{ available: boolean; isLast: boolean }>`
+  padding: 10px;
+  border-bottom-width: ${(props: { isLast: boolean }) => (props.isLast ? 0 : 1)}px;
   border-bottom-color: ${colors.textSecondary};
   opacity: ${(props: { available: boolean }) => props.available ? 1 : 0.6};
 `;
 
 const DropdownItemText = styled.Text<{ available: boolean }>`
-  font-size: 16px;
+  font-size: 15px;
   color: ${(props: { available: boolean }) => props.available ? colors.textPrimary : colors.textInverse};
   text-align: center;
 `;
 
-const StartButton = styled.TouchableOpacity`
-  background-color: ${colors.buttonPrimary};
-  padding: 15px 30px;
-  border-radius: 8px;
-  margin-top: 20px;
-`;
-
-const StartButtonText = styled.Text`
-  color: ${colors.textInverse};
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-`;
+ 
 
 interface StartScreenProps {
   onDistrictSelect: (district: District) => void;
@@ -87,22 +75,14 @@ interface StartScreenProps {
 
 export const StartScreen: React.FC<StartScreenProps> = ({ onDistrictSelect }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedDistrict, setSelectedDistrict] = useState<District | null>(null);
 
   const handleDistrictSelect = (district: District) => {
     if (district.available) {
-      setSelectedDistrict(district);
-      setIsDropdownOpen(false);
+      onDistrictSelect(district);
     }
   };
 
-  const handleStartGame = () => {
-    if (selectedDistrict) {
-      onDistrictSelect(selectedDistrict);
-    }
-  };
-
-  const availableDistricts = districts.filter(district => district.available);
+  
 
   return (
     <ScreenLayout backgroundImage={backgroundImages.startScreen} showBottomToggle={false} defaultCollapsed={false}>
@@ -117,18 +97,19 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onDistrictSelect }) =>
         <DropdownContainer>
           <DropdownButton onPress={() => setIsDropdownOpen(!isDropdownOpen)}>
             <DropdownButtonText>
-              {selectedDistrict ? selectedDistrict.germanName : 'Kreis auswählen'}
+              Kreis auswählen
             </DropdownButtonText>
             <DropdownIcon>{isDropdownOpen ? '▲' : '▼'}</DropdownIcon>
           </DropdownButton>
           
           {isDropdownOpen && (
             <DropdownList>
-              <ScrollView>
-                {districts.map((district) => (
+              <ScrollView contentContainerStyle={{ paddingBottom: 0 }}>
+                {districts.map((district, idx) => (
                   <DropdownItem
                     key={district.id}
                     available={district.available}
+                    isLast={idx === districts.length - 1}
                     onPress={() => handleDistrictSelect(district)}
                   >
                     <DropdownItemText available={district.available}>
@@ -141,11 +122,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onDistrictSelect }) =>
           )}
         </DropdownContainer>
         
-        {selectedDistrict && (
-          <StartButton onPress={handleStartGame}>
-            <StartButtonText>Spiel starten</StartButtonText>
-          </StartButton>
-        )}
+        
       </ActionBar>
     </ScreenLayout>
   );

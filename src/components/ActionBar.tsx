@@ -22,11 +22,10 @@ export const ActionBar: React.FC<ActionBarProps> = ({ children, extraBottomPaddi
     if (isCollapsed) {
       Animated.timing(heightAnim, {
         toValue: 0,
-        duration: 200,
+        duration: 80,
         useNativeDriver: false,
       }).start();
     } else {
-      // Expand immediately to fit content
       heightAnim.setValue(Math.max(contentHeight, minExpandedHeight));
     }
   }, [isCollapsed, contentHeight, minExpandedHeight, heightAnim]);
