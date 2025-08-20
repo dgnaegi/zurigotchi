@@ -5,6 +5,7 @@ import { District } from '../constants/districts';
 import { backgroundImages } from '../constants/backgrounds';
 import { ScreenLayout, UpperContent, LowerContent } from '../components/ScreenLayout';
 import { AvatarContainer, AvatarImage } from './GameScreen.styled';
+import { StatsBar } from '../components/StatsBar';
 
 const DistrictTitle = styled.Text`
   font-size: 28px;
@@ -32,6 +33,7 @@ interface GameScreenProps {
 export const GameScreen: React.FC<GameScreenProps> = ({ selectedDistrict, onBackToStart }) => {
   return (
     <ScreenLayout backgroundImage={backgroundImages.gameBackground}>
+      <StatsBar overallPercent={72} />
       <UpperContent>
         <AvatarContainer>
           <AvatarImage source={require('../../assets/avatar.png')} />
