@@ -3,9 +3,10 @@ import styled from 'styled-components/native';
 import { colors } from '../constants/colors';
 import { District } from '../constants/districts';
 import { backgroundImages } from '../constants/backgrounds';
-import { ScreenLayout, UpperContent, LowerContent } from '../components/ScreenLayout';
+import { ScreenLayout, UpperContent } from '../components/ScreenLayout';
 import { AvatarContainer, AvatarImage } from './GameScreen.styled';
 import { StatsBar } from '../components/StatsBar';
+import { ActionBar } from '../components/ActionBar';
 
 const DistrictTitle = styled.Text`
   font-size: 28px;
@@ -32,19 +33,18 @@ interface GameScreenProps {
 
 export const GameScreen: React.FC<GameScreenProps> = ({ selectedDistrict, onBackToStart }) => {
   return (
-    <ScreenLayout backgroundImage={backgroundImages.gameBackground}>
+    <ScreenLayout backgroundImage={backgroundImages.gameBackground} defaultCollapsed={true}>
       <StatsBar overallPercent={72} />
       <UpperContent>
-        <AvatarContainer>
+        <AvatarContainer style={{ paddingBottom: 40 }}>
           <AvatarImage source={require('../../assets/avatar.png')} />
         </AvatarContainer>
       </UpperContent>
       
-      <LowerContent>
+      <ActionBar>
         <DistrictTitle>Willkommen in {selectedDistrict.germanName}!</DistrictTitle>
         <DistrictDescription>{selectedDistrict.description}</DistrictDescription>
-        
-      </LowerContent>
+      </ActionBar>
     </ScreenLayout>
   );
 };

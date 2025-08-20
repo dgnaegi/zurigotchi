@@ -4,7 +4,8 @@ import styled from 'styled-components/native';
 import { colors } from '../constants/colors';
 import { districts, District } from '../constants/districts';
 import { backgroundImages } from '../constants/backgrounds';
-import { ScreenLayout, UpperContent, LowerContent } from '../components/ScreenLayout';
+import { ScreenLayout, UpperContent } from '../components/ScreenLayout';
+import { ActionBar } from '../components/ActionBar';
 
 const Title = styled.Text`
   font-size: 32px;
@@ -104,12 +105,12 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onDistrictSelect }) =>
   const availableDistricts = districts.filter(district => district.available);
 
   return (
-    <ScreenLayout backgroundImage={backgroundImages.startScreen} showBottomToggle={false}>
+    <ScreenLayout backgroundImage={backgroundImages.startScreen} showBottomToggle={false} defaultCollapsed={false}>
       <UpperContent>
         <View />
       </UpperContent>
       
-      <LowerContent>
+      <ActionBar>
         <Title>Zurigotchi</Title>
         <Subtitle>Wähle einen Kreis</Subtitle>
         
@@ -145,7 +146,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onDistrictSelect }) =>
             <StartButtonText>Spiel starten</StartButtonText>
           </StartButton>
         )}
-      </LowerContent>
+      </ActionBar>
     </ScreenLayout>
   );
 };
