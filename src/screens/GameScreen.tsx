@@ -24,6 +24,31 @@ const DistrictDescription = styled.Text`
   line-height: 24px;
 `;
 
+const ButtonsRow = styled.View`
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const PrimaryButton = styled.TouchableOpacity`
+  background-color: ${colors.buttonPrimary};
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 0 8px;
+`;
+
+const SecondaryButton = styled.TouchableOpacity`
+  background-color: ${colors.buttonSecondary};
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin: 0 8px;
+`;
+
+const ButtonText = styled.Text`
+  color: ${colors.textInverse};
+  font-size: 16px;
+  font-weight: bold;
+`;
+
  
 
 interface GameScreenProps {
@@ -32,6 +57,9 @@ interface GameScreenProps {
 }
 
 export const GameScreen: React.FC<GameScreenProps> = ({ selectedDistrict, onBackToStart }) => {
+  const handleStart = () => {
+    // TODO: Implement start action
+  };
   return (
     <ScreenLayout backgroundImage={backgroundImages.gameBackground} defaultCollapsed={true}>
       <StatsBar overallPercent={72} />
@@ -44,6 +72,14 @@ export const GameScreen: React.FC<GameScreenProps> = ({ selectedDistrict, onBack
       <ActionBar>
         <DistrictTitle>Willkommen in {selectedDistrict.germanName}!</DistrictTitle>
         <DistrictDescription>{selectedDistrict.description}</DistrictDescription>
+        <ButtonsRow>
+          <SecondaryButton onPress={onBackToStart}>
+            <ButtonText>Zurück</ButtonText>
+          </SecondaryButton>
+          <PrimaryButton onPress={handleStart}>
+            <ButtonText>Start</ButtonText>
+          </PrimaryButton>
+        </ButtonsRow>
       </ActionBar>
     </ScreenLayout>
   );

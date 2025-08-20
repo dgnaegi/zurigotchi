@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import { Animated } from 'react-native';
+import { Animated, View } from 'react-native';
 import { ActionBarShell } from './ActionBar.styled';
 import { useScreenLayout } from './ScreenLayout';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface ActionBarProps {
   children: React.ReactNode;
   expandedHeight?: number; // default 360
+  extraBottomPadding?: number; // default 96
 }
 
-export const ActionBar: React.FC<ActionBarProps> = ({ children, expandedHeight = 360 }) => {
+export const ActionBar: React.FC<ActionBarProps> = ({ children, expandedHeight = 360, extraBottomPadding = 96 }) => {
   const { isCollapsed } = useScreenLayout();
   const [animation] = useState(new Animated.Value(1));
+  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     Animated.timing(animation, {
@@ -34,7 +37,11 @@ export const ActionBar: React.FC<ActionBarProps> = ({ children, expandedHeight =
         overflow: 'hidden',
       }}
     >
-      <ActionBarShell>{children}</ActionBarShell>
+      <ActionBarShell>
+        <View style={{ paddingBottom: insets.bottom + extraBottomPadding }}>
+          {children}
+        </View>
+      </ActionBarShell>
     </Animated.View>
   );
 };

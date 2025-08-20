@@ -110,7 +110,7 @@ export const StartScreen: React.FC<StartScreenProps> = ({ onDistrictSelect }) =>
         <View />
       </UpperContent>
       
-      <ActionBar>
+      <ActionBar extraBottomPadding={24}>
         <Title>Zurigotchi</Title>
         <Subtitle>Wähle einen Kreis</Subtitle>
         

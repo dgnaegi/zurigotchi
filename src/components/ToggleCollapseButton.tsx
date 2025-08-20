@@ -12,7 +12,7 @@ export const ToggleCollapseButton: React.FC<ToggleCollapseButtonProps> = ({ coll
   return (
     <ToggleWrapper insets={insets} pointerEvents="box-none">
       <ToggleButtonTouchable collapsed={collapsed} onPress={onPress} activeOpacity={0.8}>
-        <ToggleIcon collapsed={collapsed}>{collapsed ? '▼' : '▲'}</ToggleIcon>
+        <ToggleIcon collapsed={collapsed}>{collapsed ? '▲' : '▼'}</ToggleIcon>
       </ToggleButtonTouchable>
     </ToggleWrapper>
   );

@@ -7,5 +7,5 @@
 - [ ] Define stats / KPI
 - [ ] Add Bottom Actions
 - [ ] Add Events per Kreis
-- [ ] Add Quests, like physically going somewhere
+- [ ] Add Quests, like physically going somewhere, i.e. schlachthof
 - [ ] Add more Kreis
