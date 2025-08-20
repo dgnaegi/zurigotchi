@@ -1,27 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { Animated, View } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
+import { Animated, View, LayoutChangeEvent, Dimensions } from 'react-native';
 import { ActionBarShell } from './ActionBar.styled';
 import { useScreenLayout } from './ScreenLayout';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface ActionBarProps {
   children: React.ReactNode;
-  expandedHeight?: number; // default 360
   extraBottomPadding?: number; // default 96
 }
 
-export const ActionBar: React.FC<ActionBarProps> = ({ children, expandedHeight = 360, extraBottomPadding = 96 }) => {
+export const ActionBar: React.FC<ActionBarProps> = ({ children, extraBottomPadding = 96 }) => {
   const { isCollapsed } = useScreenLayout();
-  const [animation] = useState(new Animated.Value(1));
+  const [contentHeight, setContentHeight] = useState<number>(0);
+  const heightAnimRef = useRef(new Animated.Value(0));
+  const heightAnim = heightAnimRef.current;
   const insets = useSafeAreaInsets();
+  const screenHeight = Dimensions.get('window').height;
+  const minExpandedHeight = Math.max(0, Math.floor(screenHeight * 0.4));
 
   useEffect(() => {
-    Animated.timing(animation, {
-      toValue: isCollapsed ? 0 : 1,
-      duration: 300,
-      useNativeDriver: false,
-    }).start();
-  }, [isCollapsed]);
+    if (isCollapsed) {
+      Animated.timing(heightAnim, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: false,
+      }).start();
+    } else {
+      // Expand immediately to fit content
+      heightAnim.setValue(Math.max(contentHeight, minExpandedHeight));
+    }
+  }, [isCollapsed, contentHeight, minExpandedHeight, heightAnim]);
+
+  const handleLayout = (e: LayoutChangeEvent) => {
+    const measuredHeight = e.nativeEvent.layout.height;
+    setContentHeight(measuredHeight);
+    if (!isCollapsed) {
+      heightAnim.setValue(Math.max(measuredHeight, minExpandedHeight));
+    }
+  };
 
   return (
     <Animated.View
@@ -30,15 +46,12 @@ export const ActionBar: React.FC<ActionBarProps> = ({ children, expandedHeight =
         bottom: 0,
         left: 0,
         right: 0,
-        height: animation.interpolate({
-          inputRange: [0, 1],
-          outputRange: [0, expandedHeight],
-        }),
+        height: heightAnim,
         overflow: 'hidden',
       }}
     >
       <ActionBarShell>
-        <View style={{ paddingBottom: insets.bottom + extraBottomPadding }}>
+        <View style={{ paddingBottom: insets.bottom + extraBottomPadding }} onLayout={handleLayout}>
           {children}
         </View>
       </ActionBarShell>

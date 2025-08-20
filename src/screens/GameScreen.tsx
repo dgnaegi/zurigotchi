@@ -61,7 +61,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({ selectedDistrict, onBack
     // TODO: Implement start action
   };
   return (
-    <ScreenLayout backgroundImage={backgroundImages.gameBackground} defaultCollapsed={true}>
+    <ScreenLayout backgroundImage={backgroundImages.gameBackground} defaultCollapsed={false}>
       <StatsBar overallPercent={72} />
       <UpperContent>
         <AvatarContainer style={{ paddingBottom: 40 }}>
